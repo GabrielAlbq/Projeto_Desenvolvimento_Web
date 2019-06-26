@@ -7,62 +7,74 @@
               <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-start" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <select class="custom-select custom-select">
-                  <option selected>Filtrar Painel</option>
-                  <option value="1">Deslizamentos</option>
-                  <option value="2">Enchentes</option>
-                  <option value="3">Incêndio</option>
-                </select>
-              </ul>
-            </div>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="/perfil">Usuario Mil Graus</a>
+                  <a class="nav-link" href="/logado" >{{usuario.nome}}</a>
                 </li>
-                  <a class="nav-link" href="/servicos"><img class="img_profile" src="../assets/default_user.png"/></a>
-                  <button @click="sair" class="btn btn-primary">Sair</button>
+                  <div class="btn-group">
+                    <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img class="w-100" src="../assets/default_user.png">
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" href="/logado">Página Inicial</a>
+                      <a class="dropdown-item" href="/profile">Meu Perfil</a>
+                      <a class="dropdown-item" href="#">Configurações</a>
+                      <a class="dropdown-item" href="#">Ajuda</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" @click="sair" href="/login">Sair</a>
+                    </div>
+                  </div>
               </ul>
             </div>
-            
           </div>
         </nav>
       </div>
 </template>
 
 <script>
-    import { mapState, mapGetters, mapActions } from 'vuex';
+    import { mapGetters, mapActions } from 'vuex';
 
     export default {
       name: "navbar",
       data(){
         return {
-          active: this.isActive
+          usuario: {},
+          dataReady: true
         }
       },
       computed: {
-        ...mapState([
-          'navActive'
-        ]),
         ...mapGetters([
-          'isActive', 'isLoggedIn'
-        ]),
-        ...mapActions([
-          'deslogar'
+          'isLoggedIn', 'getUser'
         ])
       },
       methods: {
+        ...mapActions([
+          'deslogar'
+        ]),
         sair() {
           this.deslogar()
+          this.$router.push('/login')
         }
+      },
+      created(){
+        this.usuario = this.getUser
       }
     };    
 </script>
 
 <style scoped>
+
+.dropdown-toggle{
+  width: 50px;
+  background: none;
+  border: none;
+}
+
+.dropdown-toggle:focus{
+  outline: none;
+}
 
 #nav_white{
   margin-top: 5px;

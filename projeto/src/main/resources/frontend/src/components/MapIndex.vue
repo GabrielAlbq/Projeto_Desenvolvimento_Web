@@ -1,18 +1,17 @@
-/* eslint-disable */
-
 <template>
     <div id="map"></div>
 </template>
  
 <script>
+/* eslint-disable */
 export default {
   name: "map-index",
   methods: {
     initMap: function() {
-      var uluru = { lat: -8.05428, lng: -34.8813 };
+      var recife = { lat: -8.05428, lng: -34.8813 };
       var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 16,
-        center: uluru,
+        center: recife,
         styles: [
             {elementType: 'geometry', stylers: [{color: '#dfe4ea'}]},
             {elementType: 'labels.text.stroke', stylers: [{color: '#232323'}]},
@@ -94,11 +93,11 @@ export default {
             }
           ]
       });
-      var marker = new google.maps.Marker({ position: uluru, map: map });
+      var marker = new google.maps.Marker({ position: recife, map: map });
     }
   },
 
-  mounted() {
+  async mounted() {
     this.initMap();
   }
 };

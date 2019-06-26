@@ -51,17 +51,6 @@
       width: 120px;
     }
 
-    .navbar{
-      background-color: #2980b9;
-    }
-
-    .about{
-      font-size: 13pt;
-      width: 100%;
-      color: #414141;
-      background-color: aliceblue;
-    }
-
     .icon-small{
       transition-duration: .6s;
       padding-top: 35%;
@@ -81,7 +70,7 @@
     }
 
     .icon-med{
-      width: 550px;
+      width: 500px;
     }
 
     .p-section-icon{
@@ -97,7 +86,7 @@
     }
 
     .video-section h2{
-      color: aliceblue;
+      color: #e5e5e5;
     }
 
     .title-section{
@@ -109,7 +98,7 @@
       height: 400px;
       font-size: 13pt;
       color: #414141;
-      background-color: aliceblue;
+      background-color: #e5e5e5;
     }
 
     .callback-section{
